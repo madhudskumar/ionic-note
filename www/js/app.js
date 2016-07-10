@@ -19,7 +19,7 @@ app.config(function($stateProvider, $urlRouterProvider){
   });
 
   $stateProvider.state('edit',{
-    url:'/edit/:noteID',
+    url:'/edit/:noteId',
     templateUrl:'templates/edit.html'
   });
 
@@ -38,3 +38,22 @@ var notes = [
     desc:'stupid to create second'
   }
 ];
+
+function getNote(noteId){
+  for(var i = 0; i < notes.length; i++){
+    if(notes[i].id == noteId){
+      console.log(notes[i]);
+      return notes[i];
+    }
+  }
+  return undefined;
+}
+
+function updateNote(note){
+  for(var i = 0; i < notes.length; i++) {
+    if (notes[i].id == note.id) {
+      notes[i] = note;
+      return;
+    }
+  }
+}

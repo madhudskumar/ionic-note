@@ -1,3 +1,8 @@
 app.controller('editCtrl',function($scope, $state){
-  $scope.id = $state.params.noteID;
+  $scope.note = angular.copy(getNote($state.params.noteId));
+
+  $scope.save = function () {
+    updateNote($scope.note);
+    $state.go('list');
+  }
 });
