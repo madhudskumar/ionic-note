@@ -13,6 +13,12 @@ app.run(function($ionicPlatform) {
 });
 
 app.config(function($stateProvider, $urlRouterProvider){
+  $stateProvider.state('newNote',{
+    url:'/add',
+    templateUrl:'templates/edit.html',
+    controller:'newNoteCtrl'
+  });
+
   $stateProvider.state('list',{
     url:'/list',
     templateUrl:'templates/list.html'
@@ -20,40 +26,9 @@ app.config(function($stateProvider, $urlRouterProvider){
 
   $stateProvider.state('edit',{
     url:'/edit/:noteId',
-    templateUrl:'templates/edit.html'
+    templateUrl:'templates/edit.html',
+    controller: 'editCtrl'
   });
 
   $urlRouterProvider.otherwise("/list");
 });
-
-var notes = [
-  {
-    id:1,
-    title:'firstNote',
-    desc:'some notes on first Note'
-  },
-  {
-    id:2,
-    title:'SecondNote',
-    desc:'stupid to create second'
-  }
-];
-
-function getNote(noteId){
-  for(var i = 0; i < notes.length; i++){
-    if(notes[i].id == noteId){
-      console.log(notes[i]);
-      return notes[i];
-    }
-  }
-  return undefined;
-}
-
-function updateNote(note){
-  for(var i = 0; i < notes.length; i++) {
-    if (notes[i].id == note.id) {
-      notes[i] = note;
-      return;
-    }
-  }
-}

@@ -1,8 +1,8 @@
-app.controller('editCtrl',function($scope, $state){
-  $scope.note = angular.copy(getNote($state.params.noteId));
+app.controller('editCtrl',function($scope, $state, noteStoreFactory){
+  $scope.note = angular.copy(noteStoreFactory.getNote($state.params.noteId));
 
   $scope.save = function () {
-    updateNote($scope.note);
+    noteStoreFactory.updateNote($scope.note);
     $state.go('list');
   }
 });
