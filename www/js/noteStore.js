@@ -41,6 +41,12 @@ app.factory('noteStoreFactory', function () {
         }
       }
       persist();
+    },
+
+    move: function (note, $fromIndex, $toIndex) {
+      notes.splice($fromIndex, 1);
+      notes.splice($toIndex, 0, note);
+      persist();
     }
   }
 });

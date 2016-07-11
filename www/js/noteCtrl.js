@@ -3,5 +3,9 @@ app.controller('listCtrl', function ($scope, noteStoreFactory) {
 
   $scope.remove = function (noteId) {
     noteStoreFactory.deleteNote(noteId);
+  };
+
+  $scope.move = function (note, $fromIndex, $toIndex) {
+    noteStoreFactory.move(note, $fromIndex, $toIndex);
   }
 });
