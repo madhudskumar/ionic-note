@@ -1,7 +1,7 @@
 <ion-view view-title="My Notes">
   <ion-content>
-    <div ng-controller="listCtrl">
-      <ion-list show-reorder="true">
+    <div>
+      <ion-list show-reorder="showOrder">
         <ion-item ng-href="#/edit/{{note.id}}" ng-repeat="note in notes track by note.id" class="item-remove-animate">
           <p>{{note.title}}</p>
           <p>{{note.desc}}</p>
@@ -13,5 +13,6 @@
   </ion-content>
   <div class="bar bar-footer bar-stable">
     <a href="#/add" class="button button-balanced icon-left ion-compose" style="width: 50%; align-content: right">New Note</a>
+    <button class="button button-assertive" ng-click="showOrderSet()">reorder</button>
   </div>
 </ion-view>
